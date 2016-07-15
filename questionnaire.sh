@@ -30,6 +30,10 @@ echo $ans5 >> answers.list
 echo $TIMESTAMP >> answers.list
 
 paste -d, -s answers.list >> answers.csv
+
+paste -d, -s answers.csv > answers.sql
+
+mysql -h LOCALHOST -u root -p "questionnaire" < answers.sql -e "LOAD DATA INFILE '/home/cabox/workspace/task-5-database-interface/answers.csv' INTO TABLE responses FIELDS TERMINATED BY ','"
  
 
 
